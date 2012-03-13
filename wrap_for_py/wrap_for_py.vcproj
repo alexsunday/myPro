@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="D:\boost\boost_1_46_1;ISO8583/"
+				AdditionalIncludeDirectories="D:\boost\boost_1_46_1;ISO8583/;C:\Python27\include"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -58,8 +58,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libboost_python-vc90-mt-gd-1_46_1.lib"
-				AdditionalLibraryDirectories="&quot;D:\boost\boost_1_46_1\bin.v2\libs\python\build\msvc-9.0\debug\link-static\threading-multi&quot;"
+				AdditionalDependencies="python27.lib"
+				OutputFile="$(OutDir)\$(ProjectName).pyd"
+				AdditionalLibraryDirectories="C:\Python27\libs;D:\boost\boost_1_46_1\bin.v2\libs\python\build\msvc-9.0"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -176,8 +177,20 @@
 				>
 			</File>
 			<File
+				RelativePath=".\pyt.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\wMain.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter

@@ -1,21 +1,23 @@
 #include <iostream>
+#include <boost/python.hpp>
+
 #include "iso8583_field_def.h"
 #include "iso8583_wrappers.h"
 using namespace std;
-
+using namespace boost::python;
 // #define PE_POS_DEF		1			//交费易POS终端
 // #define PE_8583_64_DEF	2			//交费易64域
 // #define DGBANK_DEF		3			//东莞银行
 // #define GUANGUNIONPAY 	4			//广东银联无磁交易
 
-class ISO8583
+class myISO8583
 {
 private:
 	ISO8583_MSG *msg;
 
 public:
-	ISO8583():msg(NULL) {}
-	~ISO8583()
+	myISO8583():msg(NULL) {}
+	~myISO8583()
 	{
 		if (msg)
 		{
@@ -99,3 +101,12 @@ public:
 	}
 
 };
+
+
+BOOST_PYTHON_MODULE(ISO8583)
+{
+	class_<myISO8583>("ISO8583" ,"Just a TEST")
+		.def("setData",&myISO8583::setData , "DOC string1" , arg("hexString") , arg("bizType"))
+		.def("getData",&myISO8583::getData , "DOC string2" , arg("outBuf") , arg("outMaxLen"));
+}
+
