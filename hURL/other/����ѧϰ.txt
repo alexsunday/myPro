@@ -1,0 +1,7 @@
+\)"\ href="(https?://.+?)"
+<strong>找到相关结果数(.+?)个
+<a.+?href=["'](https?://.+?)['"]
+<a.+?href=["']([^:]+?)['"]
+<a.+?href=["'](.+?)['"]
+http://deerchao.net/tutorials/regex/regex.htm
+https?://.+

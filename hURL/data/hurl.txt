@@ -1,0 +1,73 @@
+FILENAME	FTYPE	CODE	NOTE
+facebook.asp	normal	cmd.exe	刚找的Shell。
+yesitis.asp	normal	execute	快捷留言簿 蓝屏一句话木马
+yesitis.asp	normal	eval	快捷留言簿  海洋一句话木马
+shop.asp	normal	execute	超市插件数据库地址 蓝屏一句话木马
+shop.asp	normal	eval	超市插件数据库地址 海洋一句话木马
+fadmy.asa	normal	/alexa/fadmy.asa	alexa作弊的飞速提高 一句话木马
+aspcheck.asp	normal	探针	asp探针
+asp.asp	normal	探针	asp探针
+aaa.asp	normal	空间运行环境检测工具	空间运行环境检测工具
+dede_admin.txt	normal	~Insert Into	获得dedecms管理员的md5口令，后台：/admin/index.php
+conn.asp	normal	<%	暴库
+conn.asp	normal	<%	暴库
+update.asp	normal	跳过备份	选择备份数据库可获得数据库路径
+update.asp	normal	跳过备份	选择备份数据库可获得数据库路径
+z_shop_newshop.asp	normal	商店招牌	超市插件 一句话木马插入地址
+diy.asp	normal	绝对路径(包括文件名:如	有上传权限的webshell(无口令)
+diy.asp	normal	本文件绝对路径	上传webshell小马
+myup.asp	normal	绝对路径	上传webshell。
+ASPAdmin_A.asp	normal	管理登录	ASPAdmin工具 默认密码为hididi.net
+ASPAdmin.asp	normal	管理登录	ASPAdmin工具 默认密码为hididi.net
+servu.aspx	normal	Serv-U	"""serv-U提权aspx版,获得3389肉鸡的捷径   """
+servu.aspx	normal	Serv-U	"""serv-U提权aspx版,获得3389肉鸡的捷径   """
+update_baidu.asp	normal	1906 更新文件	"""COCOON Counter统计程序漏洞 <%eval request(""""#"""")%>    """
+User_Reg1.asp	normal	新会员注册	动易2006 注册asp用户漏洞。
+User_Reg.asp	normal	>> 服务条款和声明</title>	动易2006 注册asp用户漏洞。
+servu.php	normal	Serv-U	"""serv-U提权php版,获得3389肉鸡的捷径    """
+servu.aspx	normal	Serv-U	"""serv-U提权aspx版,获得3389肉鸡的捷径    """
+servu.asp	normal	Serv-U	"""serv-U提权asp版,获得3389肉鸡的捷径    """
+servu.php	normal	Serv-U	"""serv-U提权php版,获得3389肉鸡的捷径    """
+servu.aspx	normal	Serv-U	"""serv-U提权aspx版,获得3389肉鸡的捷径    """
+servu.asp	normal	Serv-U	"""serv-U提权asp版,获得3389肉鸡的捷径    """
+zz.asp	normal	设置站长帐号	惊云下载系统管理员添加文件。
+wish.php	normal	4.1.0	discuz 4.1.0 许愿池插件远程包含漏洞。
+web.config	normal	sa;Password=	sql server的sa用户连接信息。
+up_BookPicPro.asp	normal	上传成功	搜索普世购物系统，后台管理员的默认帐号和密码是：admin1 admin1，漏洞文件是up_BookPicPro.asp，用动感商城上传
+su.asp	normal	serv-U	"""serv-U提权asp版,获得3389肉鸡的捷径。    """
+servusu.asp	normal	Serv-U	"""serv-U提权asp版,获得3389肉鸡的捷径。    """
+Region.asp	normal	国家/地区	动易最新0day:Region.asp注入漏洞。
+NewComment.asp	normal	document.write	动易2006 SP4 SQL版注入漏洞
+myup.asp	normal	password	asp网站助手的默认上传文件名。
+css.asp	normal	password	黑客常用文件名系列。
+cmd.asp	normal	cmd.exe	执行dos命令的webshell
+myup.asp	normal	password	asp网站助手的默认上传文件名。
+css.asp	normal	password	黑客常用文件名系列。
+cmd.asp	normal	cmd.exe	执行dos命令的webshell
+xiao.asp	normal	绝对路径	
+shell.asp	normal	password	黑客常用文件名系列。
+SelectPic.asp	normal	选择图片	风讯系统漏洞 - 可以浏览整站文件
+upfile.asp	normal	化境	化境上传漏洞。
+upfile.asp	normal	先选择	论坛上传漏洞
+upfile.asp	normal	"""type=""""file"""""""	论坛上传漏洞
+upfile.asp	normal	化境	化境上传漏洞。
+upfile.asp	normal	化境	化境上传漏洞。
+upfile.asp	normal	先选择	论坛上传漏洞
+upfile.asp	normal	"""type=""""file"""""""	论坛上传漏洞
+uploadPic.asp	normal	"""type=""""file"""""""	
+upload_flash.asp	normal	"""type=""""file"""""""	上传漏洞
+upload_Dialog.asp	normal	"""type=""""file"""""""	上传漏洞
+upload.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile_soft.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile_photo.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile_flash.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile_article.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile_adpic.asp	normal	"""type=""""file"""""""	上传漏洞
+upfile.htm	normal	"""type=""""file"""""""	
+upfile.asp	normal	powered by WEBBOY	
+upfile.asp	normal	powered by WEBBOY	
+upfile.asp	normal	Powered By ：SMT Version 5.0	
+upfile.asp	normal	Powered By ：SMT Version 5.0	
+upfile_flash.asp	normal	Powered By ：SMT Version 5.0	
+upfile_flash.asp	normal	Powered By ：SMT Version 5.0	
+upload_file.asp	normal	同城约会 贺卡传情 情感随笔 热门投票	明小子上传

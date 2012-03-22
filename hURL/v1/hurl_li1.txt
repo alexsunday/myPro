@@ -1,0 +1,12 @@
+﻿Keyword	Filename	Path1	Note
+powered by WEBBOY	/	upfile.asp 	
+powered by WEBBOY	/db	upfile.asp 	
+Powered By ：SMT Version 5.0	/	upfile.asp	
+Powered By ：SMT Version 5.0	/bbs	upfile.asp	
+Powered By ：SMT Version 5.0	/	upfile_flash.asp	
+Powered By ：SMT Version 5.0	/bbs	upfile_flash.asp		
+同城约会 贺卡传情 情感随笔 热门投票	/admin	upload_file.asp	明小子上传
+公司后台	/manage	Login.asp	用"or"="or"
+公司后台	/	Login.asp	用"or"="or"
+企业邮局 企业荣誉 营销网络 产品分类 信息反馈 联系我们 收藏本站 网站管理 	/admin	login.asp	后台管理地址,管理员帐号密码=admin	
+Foosun	Admin/	login.asp	后台的后缀全是admin/login.asp

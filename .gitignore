@@ -4,4 +4,7 @@ obj/*
 *.ncb
 *.suo
 *.Sunday.user
-
+*.pyc
+*.pyo
+*.exe
+*.lnk
