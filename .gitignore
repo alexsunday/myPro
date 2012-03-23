@@ -7,4 +7,8 @@ obj/*
 *.pyc
 *.pyo
 *.exe
+*.dll
 *.lnk
+client_test/obj/*
+client_test/bin/*
+client_test/debug/*
