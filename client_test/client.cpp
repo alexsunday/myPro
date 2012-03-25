@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <cassert>
 
+#include <WinSock2.h>
+
 #include "SimpleIni.h"
 using namespace std;
 
@@ -97,7 +99,10 @@ int loadConfig(map<string,string>& outControl ,map<int , string>& outData , cons
 	return 0;
 }
 
-
+SOCKET setup_socket(const string& ip, const string& port )
+{
+	//设置连接到服务器
+}
 
 
 
@@ -107,6 +112,7 @@ int main(int argc , char** argv)
 	//1、读取配置 ip、port、data
 	//	读取命令行，若没有，直接读取程序名对应ini
 	string iniFile;
+	SOCKET sock;
 	if (argc != 1)
 		iniFile = argv[0] ; 
 	else
@@ -122,11 +128,14 @@ int main(int argc , char** argv)
 	}
 	//	2、设置连接
 	//开始循环
+
+	
 /*
 
 	3、发送并监听回复，异步，显示结果
 	4、继续循环
 */
+	Sleep(10000);
 
 	return -1;
 }
