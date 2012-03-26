@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="pe_test_client"
-	ProjectGUID="{CBD8EB59-B78C-404C-9F4C-05556461E05E}"
-	RootNamespace="client_test"
+	Name="pe_test_server"
+	ProjectGUID="{49540B08-718A-4001-BCFB-AE9E4DC54E06}"
+	RootNamespace="pe_test_server"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="ISO8583/;iniParser/;"
+				AdditionalIncludeDirectories="../client_test/iniParser;../client_test/ISO8583"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="WS2_32.LIB"
+				AdditionalDependencies="WS2_32.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -91,8 +91,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="bin/"
-			IntermediateDirectory="obj/"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
@@ -116,7 +116,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="ISO8583/;iniParser/;"
+				AdditionalIncludeDirectories="../client_test/iniParser;../client_test/ISO8583"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -135,7 +135,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="WS2_32.LIB"
+				AdditionalDependencies="WS2_32.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -175,7 +175,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\client.cpp"
+				RelativePath=".\server.cpp"
 				>
 			</File>
 		</Filter>
@@ -192,46 +192,46 @@
 			>
 		</Filter>
 		<Filter
-			Name="iniParser"
+			Name="ISO8583"
 			>
 			<File
-				RelativePath=".\iniParser\ConvertUTF.c"
+				RelativePath="..\client_test\ISO8583\iso8583_field_def.h"
 				>
 			</File>
 			<File
-				RelativePath=".\iniParser\ConvertUTF.h"
+				RelativePath="..\client_test\ISO8583\iso8583_wrappers.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\iniParser\SimpleIni.h"
+				RelativePath="..\client_test\ISO8583\iso8583_wrappers.h"
+				>
+			</File>
+			<File
+				RelativePath="..\client_test\ISO8583\packbody_def.h"
+				>
+			</File>
+			<File
+				RelativePath="..\client_test\ISO8583\packbody_parser.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\client_test\ISO8583\packbody_parser.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="ISO8583"
+			Name="iniParser"
 			>
 			<File
-				RelativePath=".\ISO8583\iso8583_field_def.h"
+				RelativePath="..\client_test\iniParser\ConvertUTF.c"
 				>
 			</File>
 			<File
-				RelativePath=".\ISO8583\iso8583_wrappers.cpp"
+				RelativePath="..\client_test\iniParser\ConvertUTF.h"
 				>
 			</File>
 			<File
-				RelativePath=".\ISO8583\iso8583_wrappers.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ISO8583\packbody_def.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ISO8583\packbody_parser.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ISO8583\packbody_parser.h"
+				RelativePath="..\client_test\iniParser\SimpleIni.h"
 				>
 			</File>
 		</Filter>

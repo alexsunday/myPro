@@ -12,3 +12,5 @@ obj/*
 client_test/obj/*
 client_test/bin/*
 client_test/debug/*
+pe_test_server/obj/*
+pe_test_server/bin/*
