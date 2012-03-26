@@ -8,6 +8,7 @@
 #include <vector>
 using namespace std;
 
+#define  DEF(x) x
 
 /*
  *解析iniFile，取出所有需要的控制信息，以map<string,string>形式装订；
@@ -100,5 +101,6 @@ int loadConfig(map<string,string>& outControl ,map<int , string>& outData , cons
 
 int main()
 {
+	PKT_MSG *msg = pkt_malloc( DEF()  )
 	return 0;
 }

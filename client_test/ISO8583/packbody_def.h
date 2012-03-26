@@ -89,5 +89,14 @@ static PKT_DEF FA_PKT_B_R002_0002_RESP[] ={
 	/*005*/ {TYP_ASC,  FMT_FIXED , NULL      , 12, "转出账户可用余额"}, 
 };
 
-
+static PKT_DEF FA_PKT_B_R002_0003_REQ[] ={
+	/*000*/ {TYP_ASC,  FMT_FIXED , NULL      , 4 , "信息码"}, 
+	/*001*/ {TYP_ASC,  FMT_FIXED , L_ZERO    , 12, "Pe系统参考号"}, 
+	/*002*/ {TYP_ASC,  FMT_FIXED , NULL      , 4, "业务代码"}, 
+	/*003*/ {TYP_ASC,  FMT_FIXED , NULL      , 6, "缴费省代码"}, 
+	/*004*/ {TYP_ASC,  FMT_FIXED , NULL      , 6 , "缴费城市代码"}, 
+	/*005*/ {TYP_ASC,  FMT_FIXED , NULL      , 4, "缴费项目编号"}, 
+	/*006*/ {TYP_ASC,  FMT_FIXED , NULL		,	1, "充值产品类型"},
+	/*007*/ {TYP_ASC,  FMT_FIXED , R_ZERO		,	20, "充值号码"}
+};
 #endif /* _packbody_def_h__*/

@@ -12,6 +12,74 @@
 #include "packbody_parser.h"
 using namespace std;
 
+
+
+/****************************************************************
+*   Function name    : print_hex
+*   Author           : Peng GuoYi
+*   Coding Date      : 2012/03/14 15:53
+*   Description      : 十六进制打印
+*   Return type      : 
+*   Argument         : 
+****************************************************************/
+void print_hex(char * data, int data_len)
+{
+	int i,t,line;
+	int fix = 16;
+	unsigned char ch;
+	int size_line = fix * 5;
+	char *pline = (char *)malloc(size_line);
+	memset(pline, ' ', size_line);
+
+	printf("--------------");
+	for (i = 0; i < fix; i++)
+	{
+		printf("----");
+	}
+	printf("\n");
+
+	line = 0;
+	for (i = 0 , t = 0; i < data_len ; i ++ )
+	{
+		ch =  (unsigned char)data[i];
+		sprintf(pline + t*3, "%02X ", ch);
+		if (ch >= 0x0 && ch <= 0x0D || ch == 0xFF)
+		{
+			pline[fix*3 + t + 3] = '.';
+		}else pline[fix*3 + t + 3] = (char)ch;
+
+
+		if ((i+1) % fix == 0)
+		{			
+			pline[fix*3] = ' ';
+			pline[fix*3 + 1] = ';';
+			pline[fix*3 + fix + 3] = 0;
+			printf("%08xh: ",line);
+			line += fix;
+			printf("%s\n",pline);
+			memset(pline, ' ', size_line);
+			t = 0;
+		}else 
+			t ++;
+	}
+
+	if(t != 0){
+		pline[t*3] = ' ';
+		pline[fix*3] = ' ';
+		pline[fix*3 + 1] = ';';
+		pline[fix*3 + fix + 3] = 0;
+		printf("%08xh: ",line);
+		printf("%s\n",pline);
+	}
+	printf("--------------");
+	for (i = 0; i < fix; i++)
+	{
+		printf("----");
+	}
+	printf("\n");
+	free(pline);
+}
+
 /*
  *解析iniFile，取出所有需要的控制信息，以map<string,string>形式装订；
  *解析所有的字段信息，以 map< int , string> 存储
@@ -275,11 +343,18 @@ int recvMSG(char* buf , int bufMaxLen , SOCKET fd , const string& headerType)
 	int headerLen = 0;
 	int bodyLen = 0;
 	//取包头
-	while(  (curRecv = recv(fd , headerBuf + hasRecv , headerType.size() - hasRecv , 0 ))>0  )
+
+	do 
 	{
-		curRecv += hasRecv ;
-		continue ;
-	}
+		curRecv = recv(fd , headerBuf + hasRecv , headerType.size() -hasRecv , 0);
+		if (curRecv == INVALID_SOCKET)
+		{
+			cerr << "recv ERROR!" << endl;
+		}
+
+		hasRecv += curRecv;
+	} while (hasRecv < headerType.size());
+
 	headerLen = atoi(headerBuf);
 	//包体长度
 	if (headerType[0] == 'L')
@@ -298,18 +373,20 @@ int recvMSG(char* buf , int bufMaxLen , SOCKET fd , const string& headerType)
 	assert(bodyLen <= bufMaxLen );
 	//取包体
 	curRecv = 0;
-	while (  (curRecv = recv(fd , buf + hasRecv , bodyLen - hasRecv , 0 ))>0  ) 
+	hasRecv = 0;
+	do 
 	{
-		hasRecv += curRecv;
-		continue;
-	}
+		curRecv = recv(fd , buf + hasRecv , bodyLen - hasRecv , 0);
+
+		hasRecv +=curRecv ;
+	} while (hasRecv < bodyLen);
 
 	return hasRecv;
 }
 
 int send_recv(const map<string,string>& control, const map<int,string>& data, SOCKET fd )
 {
-	PKT_MSG *msg = pkt_malloc(FA_PKT_HEAD , sizeof(FA_PKT_HEAD));
+	PKT_MSG *msg = pkt_malloc(FA_PKT_B_R002_0003_REQ , sizeof(FA_PKT_B_R002_0003_REQ));
 	const char*s = NULL;
 	char header[1024] = { 0 };
 	int headerLen     =   0;
@@ -327,38 +404,47 @@ int send_recv(const map<string,string>& control, const map<int,string>& data, SO
 		pkt_set_field(msg , it->first, (char *)tmpInfo.c_str()  , tmpInfo.size() );
 	}
 
-	pkt_get_msg(msg , (unsigned char*)buf + control.find("header")->second.size() ,  \
-		sizeof(buf) -control.find("header")->second.size() , &bufLen);
+	pkt_get_msg(msg , (unsigned char*)buf ,	sizeof(buf)  , &bufLen);
 
 	tmpInfo = control.find("header")->second;
 	if (tmpInfo[0] == 'L')
 	{
-		sprintf_s(buf , tmpInfo.size() , "%d" , bufLen + tmpInfo.size());
+		sprintf(header , "%04d" , bufLen + tmpInfo.size() );
 	}
 	else if (tmpInfo[0] == 'l')
 	{
-		sprintf_s(buf , tmpInfo.size() , "%d" , bufLen );
+		sprintf(header ,  "%04d" , bufLen );
 	}
 	else
 	{
 		//error!
 	}
-	cout<< "======================================SEND======================================" << endl;
-	pkt_print(msg);
-	
+
+	char n[2048] = { 0 };
+	memcpy(n , header , control.find("header")->second.size());
+	memcpy(n + control.find("header")->second.size() , buf , bufLen);
+	memcpy(buf , n , bufLen + control.find("header")->second.size());
+	bufLen += control.find("header")->second.size() ;
+	//send(fd , header , control.find("header")->second.size() , 0);
 	//send
 	while( (curSent = send(fd , buf + hasSent, bufLen - hasSent, 0)) > 0 ) 
 	{
 		hasSent += curSent ;
 		continue;
 	}
+	cout<< "======================================SEND======================================" << endl;
+	pkt_print(msg);
+	cout << "RAW PRINT:" << endl;
+	print_hex(buf , bufLen);
 	pkt_free(msg);
 	msg = NULL;
 
 	// recv
 	bufLen = recvMSG(buf , sizeof(buf) , fd , control.find("header")->second);
 	cout<< "======================================RECV======================================" << endl;
-	msg = pkt_malloc(FA_PKT_HEAD , sizeof(FA_PKT_HEAD));
+	cout << "RAW PRINT:" << endl;
+	print_hex(buf , bufLen);
+	msg = pkt_malloc(FA_PKT_B_R002_0003_REQ , sizeof(FA_PKT_B_R002_0003_REQ));
 	pkt_set_msg(msg , (unsigned char*)buf , bufLen);
 	pkt_print(msg);
 	pkt_free(msg);
