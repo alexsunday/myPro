@@ -21,7 +21,7 @@ def save_a_byte(n , line ):
 	aline = line.split(' ')
 	aline[3] = str( (int(aline[3] ) & 248 ) | ( n >> 5 & 7 ) )
 	aline[7] = str( (int(aline[7] ) & 252 ) | ( n >> 2 & 3 ) )
-	aline[11]= str( (int(aline[11]) & 248 ) | ( n >> 0 & 3 ) )
+	aline[11]= str( (int(aline[11]) & 248 ) | ( n >> 0 & 7 ) )
 	line = ' '.join(aline)
 	return line
 

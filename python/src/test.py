@@ -25,3 +25,13 @@ if __name__ == '__main__' :
 		t.join()
 	s.close()
 			
+			
+def b(a,b,c,v):
+	'''
+	
+	@param a:
+	@param b:
+	@param c:
+	@param v:
+	'''
+	return ( ((a&248) | (v>>5&7)),  ((b&252) | (v>>2&3)) , ((c&248) | (v&7)) )
