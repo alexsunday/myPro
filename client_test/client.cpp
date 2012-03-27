@@ -85,7 +85,7 @@ void print_hex(char * data, int data_len)
  *解析所有的字段信息，以 map< int , string> 存储
  *任何错误返回 -1
  */
-int loadConfig(map<string,string>& outControl ,map<int , string>& outData , const string& iniFile)
+int loadConfig(map<string,string>& outControl ,map<int , string>& outData , map<int,string> retData , const string& iniFile)
 {
 	const char* tmpStr = NULL;
 	const char* pause  = NULL;
@@ -143,27 +143,58 @@ int loadConfig(map<string,string>& outControl ,map<int , string>& outData , cons
 	//循环读取字段值
 	//恶心的SimpleIni库，用了才发现，能把简单的问题搞这么复杂！！！！哪里simple了！
 	//自作多情对返回进行排序，导致我下面的hack！
-	//下面这个奇怪的装置能正常工作~
-	vector<int> vi;
+	//下面这个奇怪的装置只是为了还原 ini 原有的顺序，将key值以数字大小排序
+	vector<int> vSend,vRecv;
 	ini.GetAllKeys("pe" , pe_keys);
 	for (CSimpleIniA::TNamesDepend::const_iterator it = pe_keys.begin(); it != pe_keys.end() ; ++it)
 	{
 		str = it->pItem ;
 		if (  string(str.begin() , str.begin()+3) == "bit"  )
 		{
-			vi.push_back( atoi(  string(str.begin() + 3,str.end()).c_str()  )   );
+			vSend.push_back( atoi(  string(str.begin() + 3,str.end()).c_str()  )   );
+		}
+		else if ( string(str.begin() , str.begin() + 3) == "RET" )
+		{
+			vRecv.push_back( atoi(string(str.begin()+3 , str.end()).c_str() ) );
 		}
 	}
-	sort(vi.begin(),vi.end());
 
-	for(int i=0; i!= vi.size() ; ++i)
+	sort(vSend.begin(),vSend.end());
+	sort(vRecv.begin(),vRecv.end());
+
+	string curvalue ;
+	for(int i=0; i!= vSend.size() ; ++i)
 	{
 		tmpStr = NULL;
 		bitKey = "bit";
-		sprintf_s(tmpsprint , sizeof(tmpsprint) , "%d" , vi[i]);
+		sprintf_s(tmpsprint , sizeof(tmpsprint) , "%d" , vSend[i]);
 		bitKey += tmpsprint ;
 		tmpStr = ini.GetValue("pe" , bitKey.c_str() );
-		tmpStr ? outData[vi[i]] = tmpStr : 0;
+		tmpStr ?  curvalue = tmpStr : 0;
+		//若被引号包围，则去掉引号，将值存入
+		//此处主要为了解决左补空格，右补空格等问题
+		//而ini解释器默认会去掉左右的空格，且若不加引号，空格在编辑器中难以发现
+		if ( curvalue[0] == '"' && curvalue[curvalue.size()-1] == '"' )
+		{
+			curvalue.erase(0,1);
+			curvalue.erase(curvalue.size()-1,1);
+		}
+		outData[vSend[i]] = curvalue ;
+	}
+	for (int i=0; i!= vRecv.size(); ++i)
+	{
+		tmpStr = NULL;
+		bitKey = "RET";
+		sprintf(tmpsprint , "%d", vRecv[i]);
+		bitKey += tmpsprint;
+		tmpStr = ini.GetValue("pe" , bitKey.c_str());
+		tmpStr ? curvalue = tmpStr : 0;
+		if( curvalue[0] == '"' && curvalue[curvalue.size()-1] == '"' )
+		{
+			curvalue.erase(0,1);
+			curvalue.erase(curvalue.size() -1 , 1);
+		}
+		retData[vRecv[i]] = curvalue ;
 	}
 
 	return 0;
@@ -203,56 +234,6 @@ SOCKET setup_socket(const string& ip, const string& port )
 	}
 	
 	return fd;
-/*
-	if(ioctlsocket(fd,FIONBIO,&ul) == SOCKET_ERROR )
-	{
-		closesocket(fd);
-		cerr << "ioctlsocket error:" << WSAGetLastError() << endl;
-		return -1;
-	}
-
-	do 
-	{
-		connect(fd , (sockaddr*)&srAddr , sizeof(sockaddr_in)) ;
-		FD_ZERO(&fs);
-		FD_SET(fd , &fs);
-
-		if(select(0,0,&fs,0,&to) == SOCKET_ERROR)
-		{
-			closesocket(fd);
-			cerr << "select error:" << WSAGetLastError() << endl;
-			return -1;
-		}
-
-		if (FD_ISSET(fd , &fs))
-		{
-			//可写数据了！
-			//重新设置为阻塞模式
-			ul = 0;
-			if(ioctlsocket(fd,FIONBIO,&ul) == SOCKET_ERROR )
-			{
-				closesocket(fd);
-				cerr << "ioctlsocket error:" << WSAGetLastError() << endl;
-				return -1;
-			}
-			return fd;
-		}
-		else
-		{
-			//timeout!
-			cerr << "Connection failed, and retry... ... " << endl;
-			--i;
-			if(i == 0)
-			{
-				cerr << "Connection to " << ip << " failed!" << endl ;
-				closesocket(fd);
-				return -1;
-			}
-		}
-	} while (i);
-
-	return -1;
-*/
 }
 
 
@@ -293,20 +274,22 @@ string translate(string& msg)
 	time_t tm = time(NULL);
 	char tmpS[32] = { 0 };
 
-	srand(tm);
+	//若不需要做模版替换（不被%包围），则直接返回
 	if ( !(msg[0] == '%' && msg[msg.size()-1] == '%') )
 	{
 		return msg;
 	}
 
+	srand(tm);
 	msg.erase( 0 , 1);
 	msg.erase( msg.size() -1 , 1);
-	//###### rand number
+	//###### 随机数
 	if (find_if(msg.begin(),msg.end(),isnotshape) == msg.end() )
 	{
 		return getrand(msg.size());
 	}
 	//hhmmssyyyymmdd
+	//先替换4个Y，如此则两个Y的就没有机会~
 	strftime(tmpS , sizeof(tmpS) , "%Y" , localtime(&tm));
 	string_replace(msg , "YYYY",tmpS);
 	strftime(tmpS , sizeof(tmpS) , "%y" , localtime(&tm));
@@ -337,33 +320,33 @@ string translate(string& msg)
  */
 int recvMSG(char* buf , int bufMaxLen , SOCKET fd , const string& headerType)
 {
-	char headerBuf[1024] = { 0 };
 	int curRecv = 0;
 	int hasRecv = 0;
-	int headerLen = 0;
+	int len1 = 0;
+	int headerLen = headerType.size();
 	int bodyLen = 0;
 	//取包头
 
 	do 
 	{
-		curRecv = recv(fd , headerBuf + hasRecv , headerType.size() -hasRecv , 0);
+		curRecv = recv(fd , buf + hasRecv , headerLen -hasRecv , 0);
 		if (curRecv == INVALID_SOCKET)
 		{
 			cerr << "recv ERROR!" << endl;
 		}
 
 		hasRecv += curRecv;
-	} while (hasRecv < headerType.size());
+	} while (hasRecv < headerLen);
 
-	headerLen = atoi(headerBuf);
+	len1 = atoi(buf);
 	//包体长度
 	if (headerType[0] == 'L')
 	{
-		bodyLen = headerLen - headerType.size();
+		bodyLen = len1 - headerType.size();
 	}
 	else if (headerType[0] == 'l')
 	{
-		bodyLen = headerLen ;
+		bodyLen = len1 ;
 	}
 	else
 	{
@@ -376,23 +359,63 @@ int recvMSG(char* buf , int bufMaxLen , SOCKET fd , const string& headerType)
 	hasRecv = 0;
 	do 
 	{
-		curRecv = recv(fd , buf + hasRecv , bodyLen - hasRecv , 0);
+		curRecv = recv(fd , buf + headerLen + hasRecv , bodyLen - hasRecv , 0);
 
 		hasRecv +=curRecv ;
 	} while (hasRecv < bodyLen);
 
-	return hasRecv;
+	return hasRecv + headerLen;
 }
 
-int send_recv(const map<string,string>& control, const map<int,string>& data, SOCKET fd )
+/*
+ *传入参数分别为：控制信息、需发送的数据、期望返回的数据格式,socket
+ */
+int send_recv(const map<string,string>& control, const map<int,string>& data, const map<int,string>& recvData , SOCKET fd )
 {
-	PKT_MSG *msg = pkt_malloc(FA_PKT_B_R002_0003_REQ , sizeof(FA_PKT_B_R002_0003_REQ));
+	/*
+	 *动态定义PKT_DEF
+	 *typedef struct tagPKT_DEF {	
+	 *short typ;	TYP_ASC
+	 *short fmt;	FMT_FIXED
+	 *short fil;	NULL
+	 *int   len;	len
+	 *const char *dsc;""
+	 } PKT_DEF;
+	 */
+	size_t  pkt_size = sizeof(PKT_DEF) * data.size() ;
+	PKT_DEF *dym_pkt = (PKT_DEF *)malloc( pkt_size ) ;
+	memset(dym_pkt , 0 , pkt_size);
+
+	//注释暂时写死！
+	char pkt_dsc[16] = "PKT_DSC";
+	PKT_DEF *dym_pkt_tmp = dym_pkt;
+	typedef map<int,string>::const_iterator ITER;
+	for (ITER it=data.begin(); it != data.end(); ++it)
+	{
+		dym_pkt_tmp->typ = TYP_ASC;
+		dym_pkt_tmp->fmt = FMT_FIXED;
+		dym_pkt_tmp->fil = NULL;
+		//引号和百分号特殊处理
+		if (  ( it->second[0] == '"'  && it->second[it->second.size()-1] == '"' )  || 
+			  ( it->second[0] == '%'  && it->second[it->second.size()-1] == '%' ) )
+		{
+			dym_pkt_tmp->len = it->second.size() -2 ;
+		}
+		else
+		{
+			dym_pkt_tmp->len = it->second.size() ;
+		}
+		dym_pkt_tmp->dsc = pkt_dsc;
+		++dym_pkt_tmp;
+	}
+
+	PKT_MSG *msg = pkt_malloc(dym_pkt , pkt_size ) ;
 	const char*s = NULL;
 	char header[1024] = { 0 };
-	int headerLen     =   0;
+	int headerLen     =   control.find("header")->second.size();
 	int headertype	  =   0;
 	char buf[2048] = { 0 };
-	int bufLen   = 0;
+	int bufLen     = 0;
 	int curSent    = 0;
 	int hasSent	   = 0;
 
@@ -404,27 +427,25 @@ int send_recv(const map<string,string>& control, const map<int,string>& data, SO
 		pkt_set_field(msg , it->first, (char *)tmpInfo.c_str()  , tmpInfo.size() );
 	}
 
-	pkt_get_msg(msg , (unsigned char*)buf ,	sizeof(buf)  , &bufLen);
+	pkt_get_msg(msg , (unsigned char*)buf + headerLen ,	sizeof(buf) -headerLen , &bufLen);
 
 	tmpInfo = control.find("header")->second;
 	if (tmpInfo[0] == 'L')
 	{
-		sprintf(header , "%04d" , bufLen + tmpInfo.size() );
+		bufLen += headerLen ;
+		sprintf(header , "%04d" , bufLen );
+		memcpy(buf , header , headerLen);
 	}
 	else if (tmpInfo[0] == 'l')
 	{
 		sprintf(header ,  "%04d" , bufLen );
+		memcpy(buf , header , headerLen);
 	}
 	else
 	{
 		//error!
 	}
 
-	char n[2048] = { 0 };
-	memcpy(n , header , control.find("header")->second.size());
-	memcpy(n + control.find("header")->second.size() , buf , bufLen);
-	memcpy(buf , n , bufLen + control.find("header")->second.size());
-	bufLen += control.find("header")->second.size() ;
 	//send(fd , header , control.find("header")->second.size() , 0);
 	//send
 	while( (curSent = send(fd , buf + hasSent, bufLen - hasSent, 0)) > 0 ) 
@@ -438,16 +459,49 @@ int send_recv(const map<string,string>& control, const map<int,string>& data, SO
 	print_hex(buf , bufLen);
 	pkt_free(msg);
 	msg = NULL;
+	memset(buf , 0 , sizeof(buf));
 
 	// recv
 	bufLen = recvMSG(buf , sizeof(buf) , fd , control.find("header")->second);
 	cout<< "======================================RECV======================================" << endl;
+
+	//再次动态声明返回值的PKT_DEF
+	free(dym_pkt);
+	dym_pkt = dym_pkt_tmp = NULL;
+
+	pkt_size= sizeof(PKT_DEF) * recvData.size() ;
+	dym_pkt = (PKT_DEF *)malloc(pkt_size);
+	dym_pkt_tmp = dym_pkt;
+	memcpy(pkt_dsc , "RETURN VALUE!" , 14 )	;//注释依旧写死
+
+	for (ITER it = recvData.begin() ; it != recvData.end() ; ++ it )
+	{
+		dym_pkt_tmp->typ = TYP_ASC;
+		dym_pkt_tmp->fmt = FMT_FIXED;
+		dym_pkt_tmp->fil = NULL;
+		//引号和百分号特殊处理
+		if (  ( it->second[0] == '"'  && it->second[it->second.size()-1] == '"' )  || 
+			( it->second[0] == '%'  && it->second[it->second.size()-1] == '%' ) )
+		{
+			dym_pkt_tmp->len = it->second.size() -2 ;
+		}
+		else
+		{
+			dym_pkt_tmp->len = it->second.size() ;
+		}
+		dym_pkt_tmp->dsc = pkt_dsc;
+		++dym_pkt_tmp;
+	}
+
+	msg = pkt_malloc(dym_pkt , pkt_size);
+	pkt_set_msg(msg , (unsigned char*)buf + headerLen , bufLen - headerLen);
+	pkt_print(msg);
 	cout << "RAW PRINT:" << endl;
 	print_hex(buf , bufLen);
-	msg = pkt_malloc(FA_PKT_B_R002_0003_REQ , sizeof(FA_PKT_B_R002_0003_REQ));
-	pkt_set_msg(msg , (unsigned char*)buf , bufLen);
-	pkt_print(msg);
+
+	//cleanner!
 	pkt_free(msg);
+	free(dym_pkt);dym_pkt = dym_pkt_tmp = NULL;
 	return 0;
 }
 
@@ -467,13 +521,15 @@ int main(int argc , char** argv)
 
 	map<string,string> control;
 	map<int , string > data;
+	map<int , string > recvData;
 
-	if (loadConfig(control , data , iniFile) == -1)
+	if (loadConfig(control , data , recvData , iniFile) == -1)
 	{
 		cerr << "读取配置错误，请重试！" << endl;
 		return 1;
 	}
 	assert(!control.empty() && ! data.empty());
+
 	//开始循环
 	int hasCircle = 0;
 	do 
@@ -491,7 +547,7 @@ int main(int argc , char** argv)
 			continue;
 		}
 
-		send_recv(control , data , sock);
+		send_recv(control , data , recvData , sock);
 
 		closesocket(sock);
 		isConnected = false;
