@@ -15,3 +15,6 @@ client_test/debug/*
 pe_test_server/obj/*
 pe_test_server/bin/*
 python/.metadata
+*.ppm
+*.jpg
+*.bmp
