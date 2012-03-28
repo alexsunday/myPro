@@ -1,1 +1,6 @@
-//TODO:...
+都是自己闲暇时写的一些无聊代码，使用gitHub集中管理而已。
+
+hURL：Python写的扫描器，实现类似于挖掘机，但......虎头蛇尾，终止！
+client_test、pe_test_server：公司里写的测试组件，主要为测试公司软件与银行通信
+wrap_for_py：准备实现ISO8583的Python封装
+python：一些python代码，目前里面将 数码隐写 实现。
