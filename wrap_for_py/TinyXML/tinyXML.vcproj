@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="wrap_for_py"
-	ProjectGUID="{E34623C2-3FDF-4498-A718-83AB6079572B}"
-	RootNamespace="wrap_for_py"
+	Name="tinyXML"
+	ProjectGUID="{2D8856D2-C7E9-4376-B599-F41C7EB55CCD}"
+	RootNamespace="tinyXML"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -17,9 +17,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="dll/"
-			IntermediateDirectory="obj/"
-			ConfigurationType="1"
+			OutputDirectory="../lib/"
+			IntermediateDirectory="../obj/"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -40,7 +40,6 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="ISO8583/;tinyXML/;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -57,17 +56,10 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="tinyXML.lib"
-				AdditionalLibraryDirectories="lib/"
-				GenerateDebugInformation="true"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
 			/>
 			<Tool
 				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -79,17 +71,14 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="../bin/"
-			IntermediateDirectory="../obj/"
-			ConfigurationType="2"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -112,7 +101,6 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="D:\boost\boost_1_46_1"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -129,8 +117,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libboost_python-vc90-mt-gd-1_46_1.lib"
-				AdditionalLibraryDirectories="&quot;D:\boost\boost_1_46_1\bin.v2\libs\python\build\msvc-9.0\debug\link-static\threading-multi&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -168,35 +154,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\ISO8583.cpp"
+				RelativePath=".\tinystr.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\main.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="ISO8583"
-			>
-			<File
-				RelativePath="..\..\..\..\Everbox\Work\ISO8583\iso8583_field_def.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Everbox\Work\ISO8583\iso8583_wrappers.cpp"
+				RelativePath=".\tinyxml.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\..\Everbox\Work\ISO8583\iso8583_wrappers.h"
+				RelativePath=".\tinyxmlerror.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tinyxmlparser.cpp"
 				>
 			</File>
 		</Filter>
@@ -206,9 +176,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\ISO8583.h"
+				RelativePath=".\tinystr.h"
 				>
 			</File>
+			<File
+				RelativePath=".\tinyxml.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="资源文件"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			>
 		</Filter>
 	</Files>
 	<Globals>
