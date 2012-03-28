@@ -8,7 +8,22 @@
 #include <vector>
 using namespace std;
 
-#define  DEF(x) x
+class PACKBODY
+{
+public:
+	PACKBODY();
+	~PACKBODY();
+
+	void getField(int idx , char* buf, size_t maxLen);
+	string getField(int idx);
+	void setField(int idx, char* data, size_t dataLen);
+	void setField(int idx, const string& data);
+	void getMsg(char* buf, size_t maxLen);
+	void setMsg(char* data , size_t dataLen);
+	void print();
+	void column();
+
+};
 
 /*
  *解析iniFile，取出所有需要的控制信息，以map<string,string>形式装订；

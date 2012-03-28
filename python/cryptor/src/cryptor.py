@@ -3,7 +3,7 @@ Created on 2012-3-27
 
 @author: Sunday
 '''
-import sys,os,struct
+import os,struct
 
 r=lambda a,b,c : (a<<5&255&224) | (b<<3&255&24) | (c&7)
 w=lambda a,b,c,v: ((a&248)|(v>>5),(b&252)|(v>>3&3),(c&248)|(v&7))
@@ -45,6 +45,7 @@ def cry_to_file(ppm_src, dst_file, tmp_ppm):
     for i in range(3):
         tmp.write(ppm.readline())
     dst_len = os.path.getsize(dst_file)
+    ppm_len = os.path.getsize(ppm_src)
     for i in range(4):
         v = int(dst_len>> (32-(i+1)*8) & 255)
         line = ppm.readline()
@@ -53,6 +54,8 @@ def cry_to_file(ppm_src, dst_file, tmp_ppm):
         v = struct.unpack('B',dst.read(1))[0]
         line = ppm.readline()
         tmp.write( save_byte_line(v,line) )
+    if ppm_len != ppm.tell():
+        tmp.write(ppm.read())
     pass
 
 if __name__ == '__main__':
