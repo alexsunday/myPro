@@ -20,6 +20,14 @@ python/.metadata
 *.bmp
 *.png
 *.bak
+*.pdb
+*.idb
+*.obj
+*.ilk
+*.dep
+BuildLog.htm
 wrap_for_py/dll/*
 wrap_for_py/lib/*
 wrap_for_py/obj/*
+
+
