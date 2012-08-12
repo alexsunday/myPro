@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<link href="/css/EditTable.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/1.js" type="text/javascript" ></script>
+		<title> {{ name }} 的工作日志 </title>
+	</head>
+	<body>
+    <div class="world">
+		<div class="title">
+			<h1>{{ name }} 的工作日志</h1>
+		</div>
+        <div class='work_form'>
+            <table class='form_table'>
+                <tr><td>姓名</td><td><input class='name' value="{{ name }}"/></td></tr>
+                <tr><td><p>项目</p></td><td><p><input class='project' value="{{ project }}"/></p></td></tr>
+                <tr><td><p>工作内容</p></td><td><p><input class='workcontent' value="{{ workcontent }}"/></p></td></tr>
+                <tr><td>日期</td><td><input class='date' value="{{ date }}"/></td></tr>
+                <tr><td>星期</td><td><input class='week' value="{{ week }}"/></td></tr>
+                <tr><td>工作类型编码</td><td><input class='worktype'value="{{ worktype }}"/></td></tr>
+                <tr><td>工作时长</td><td><input class='worklength' value="{{ worktime }}"/></td></tr>
+                <tr><td>详细工作内容</td><td><textarea class='workverbose' value="{{ workverbose }}"></textarea></td></tr>
+                <tr><td><button class="addbutton">添加</button> </td><td><button class="delbutton">删除最后一行</button>
+                    <button class="submitbutton">提交</button></td></tr>
+            </table>
+        </div>
+        <div class="display">
+            <table class="distbl">
+                <tr class='dis_header'>
+                    <td class='dis_name'>姓名</td>
+                    <td class='dis_project'>项目</td>
+                    <td class='dis_workcontent'>工作内容</td>
+                    <td class='dis_date'>日期</td>
+                    <td class='dis_week'>星期</td>
+                    <td class='dis_worktype'>工作类型编码</td>
+                    <td class='dis_worktime'>工作时长</td>
+                    <td class='dis_worknote'>详细工作内容</td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+	</body>
+
+    </html>

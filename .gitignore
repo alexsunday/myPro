@@ -25,6 +25,7 @@ python/.metadata
 *.obj
 *.ilk
 *.dep
+*.ttf
 BuildLog.htm
 wrap_for_py/dll/*
 wrap_for_py/lib/*

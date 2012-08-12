@@ -1,0 +1,46 @@
+table,td
+{  
+    border:solid 1px green;  
+    border-collapse:collapse;  
+}  
+
+tr.header,td.worktype
+{
+		text-align:center;
+}
+
+td.worknote
+{
+	width:500px;
+}
+
+tr.content
+{
+	height:60px;
+}
+
+td.addbutton
+{
+	border:solid 0px green;
+}
+
+div.work_form
+{
+    float: left;
+}
+
+div.display
+{
+    float: left;
+}
+
+div.world
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body
+{
+    /*text-align: center;*/
+}
